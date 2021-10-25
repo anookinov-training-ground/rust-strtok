@@ -11,6 +11,33 @@ pub fn strtok<'a, 'b>(s: &'a mut &'b str, delimiter: char) -> &'b str {
     }
 }
 
+// use std::{cell::UnsafeCell, marker::PhantomData};
+// struct Deserializer<T> {
+//     // some fields
+//     _t: PhantomData<T>,
+// }
+// struct Deserializer2<T> {
+//     // some fields
+//     _t1: PhantomData<fn() -> T>, // marker of covariance
+//     _t2: PhantomData<*const T>,  // marker of covariance (No Send and Sync traits)
+// }
+// struct Deserializer3<T> {
+//     // some fields
+//     _t: PhantomData<fn(T)>, // marker of contravariance
+// }
+// struct Deserializer4<'a, T> {
+//     // some fields
+//     _t1: PhantomData<fn(T)>,      // marker of invariance (together with _t2)
+//     _t2: PhantomData<fn() -> T>,  // marker of invariance (together with _t1)
+//     _t3: PhantomData<fn(T) -> T>, // marker of invariance
+//     _t4: PhantomData<*mut T>,     // marker of invariance
+//     _t5: PhantomData<&'a mut T>,  // marker of invariance
+//     _t6: PhantomData<UnsafeCell<T>>, // marker of invariance
+// }
+
+// &T -> *const T -> *mut T -> &mut T // Not Ok
+// &mut T -> *mut T -> *const T -> *mut T -> &mut T // Ok
+
 #[cfg(test)]
 mod tests {
     use super::*;
