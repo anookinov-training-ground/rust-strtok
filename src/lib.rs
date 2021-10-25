@@ -1,3 +1,6 @@
+#![warn(rust_2018_idioms)]
+// pub fn strtok<'s>(s: &'_ mut &'s str, delimiter: char) -> &'s str {
+// pub fn strtok<'s>(s: &mut &'s str, delimiter: char) -> &'s str {
 pub fn strtok<'a, 'b>(s: &'a mut &'b str, delimiter: char) -> &'b str {
     if let Some(i) = s.find(delimiter) {
         let prefix = &s[..i];
